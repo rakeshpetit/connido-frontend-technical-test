@@ -1,6 +1,6 @@
 ## Frontend Technical Test
 
-You have been asked to create a **single page** app that converts a value from *EUR* (Euro) to *GBP* (British Pound) and viceversa. The exchange rate between these 2 currencies must be fetched from [fixer.io](https://fixer.io/documentation) REST API every **30 seconds** or **manually** when the user wants to "refresh" the rate.		    
+You have been asked to create a **single page mobile application** that converts a value from *EUR* (Euro) to *GBP* (British Pound) and viceversa. The exchange rate between these 2 currencies must be fetched from [fixer.io](https://fixer.io/documentation) REST API every **30 seconds** or **manually** when the user wants to "refresh" the rate.		    
 	    
 ### Requirements:
 
