@@ -2,13 +2,13 @@
 
 You have been asked to create a **single page mobile application** that converts a value from *EUR* (Euro) to *GBP* (British Pound) and viceversa. The exchange rate between these 2 currencies must be fetched from [fixer.io](https://fixer.io/documentation) REST API every **30 seconds** or **manually** when the user wants to "refresh" the rate.		    
 	    
-### Requirements:
+### Non-functional Requirements:
 
 1. Build using **ReactNative** and **Expo SDK**.
 2. The application must feature: 
     1. State management
     2. Testing framework
-    3. **Typescript** or **JavaScript ES6** Flow types
+    3. Implemented using **Typescript** or **JavaScript ES6** Flow types
 
 ### Bonus Features:
 
