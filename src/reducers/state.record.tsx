@@ -1,4 +1,4 @@
-interface stateLayout {
+interface StateLayout {
     data: any;
     lastDataRequest: number;
     symbolData: any;
@@ -8,16 +8,16 @@ interface stateLayout {
     userSourceAmount: number;
     userDestinationAmount: number;
     errorMessage: string;
-};
+}
 
-interface actionLayout {
+interface ActionLayout {
     type: string,
     data?: any
-};
+}
 
-export const actionRec : actionLayout = { type: undefined };
+export const actionRec: ActionLayout = { type: undefined };
 
-export const stateRec: stateLayout = { 
+export const stateRec: StateLayout = {
     data: undefined,
     lastDataRequest: undefined,
     symbolData: undefined,

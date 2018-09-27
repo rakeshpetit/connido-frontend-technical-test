@@ -12,7 +12,6 @@ export const SHOW_ERROR_MESSAGE = 'show_error_message';
 export const SHOW_ERROR_MESSAGE_DONE = 'show_error_message_done';
 export const DEBUG_LOGGER = 'debug_log';
 
-
 export function pollData() {
   return {
     type: POLL_DATA

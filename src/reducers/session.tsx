@@ -1,39 +1,38 @@
 import * as actions from '../actions/session';
 import { stateRec, actionRec } from './state.record';
 
-function refreshDataDone(state : any, action: any) {
-  if(action.data === null){
+function refreshDataDone(state: any, action: any) {
+  if (action.data === null) {
     return Object.assign({}, state, {
       loading: false
     });
-  }
-  else {
+  } else {
     return Object.assign({}, state, {
       loading: false,
       data: action.data
     });
-  }  
+  }
 }
 
-function refreshSymbolDataDone(state : any, action: any) {
-  if(action.data !== null){
+function refreshSymbolDataDone(state: any, action: any) {
+  if (action.data !== null) {
     return Object.assign({}, state, {
       symbolData: action.data
     });
-  } 
+  }
 }
 
-function setDestinationCurrencyDone(state : any, action: any) {
-  if(action.data !== null){
+function setDestinationCurrencyDone(state: any, action: any) {
+  if (action.data !== null) {
     return Object.assign({}, state, {
       destinationCurrency: action.data,
       userSourceAmount: 0,
       userDestinationAmount: 0
     });
-  } 
+  }
 }
 
-export default function reducer(state: object = 
+export default function reducer(state: object =
   stateRec, action: any = actionRec) {
   switch (action.type) {
     case actions.REFRESH_DATA_START:

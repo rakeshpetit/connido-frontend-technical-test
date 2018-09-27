@@ -12,7 +12,7 @@ function callAPI(url: string) {
 }
 
 function* pollData() {
-  while(true){
+  while (true) {
     yield call(refreshData);
     yield delay(DELAY);
   }
@@ -22,16 +22,15 @@ function* refreshData() {
     try {
         yield put(action.refreshDataStart());
         const result = yield call(callAPI, ENV.FIXER_API);
-        if(result.error) {
-          yield put(action.refreshDataDone(null));
+        if (result.error) {
+          yield put(action.refreshDataDone(undefined));
           yield call(showErrorMessage, {data: result.error.info });
-        }
-        else {
+        } else {
           yield put(action.lastRequestDone(moment().unix()));
           yield put(action.refreshDataDone(result));
         }
       } catch (error) {
-        yield put(action.refreshDataDone(null));
+        yield put(action.refreshDataDone(undefined));
         yield call(showErrorMessage, {data: error.json() });
       }
 }
@@ -39,14 +38,13 @@ function* refreshData() {
 function* refreshSymbolData() {
   try {
       const result = yield call(callAPI, ENV.SYMBOL_API);
-      if(result.error) {
+      if (result.error) {
         yield call(showErrorMessage, {data: result.error.info });
-      } 
-      else {
+      } else {
         yield put(action.refreshSymbolDataDone(result));
       }
     } catch (error) {
-      yield put(action.refreshSymbolDataDone(null));
+      yield put(action.refreshSymbolDataDone(undefined));
       console.log(error);
     }
 }
@@ -62,9 +60,9 @@ function* showErrorMessage(message: any) {
 }
 
 function debugLogger(data: any) {
-  if(LOGGING_ENABLED) {
+  if (LOGGING_ENABLED) {
     console.log(data);
-  }  
+  }
 }
 
 export default function* rootSaga() {
