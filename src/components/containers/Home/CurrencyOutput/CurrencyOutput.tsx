@@ -11,10 +11,10 @@ type Props = {
 class CurrencyOutput extends Component<Props> {
   render() {
     const { input, output, lastUpdatedTimeStamp } = this.props;
-    if(lastUpdatedTimeStamp === undefined) {
-      return null;
+    if (lastUpdatedTimeStamp === undefined) {
+      return undefined;
     }
-    const lastUpdatedTime = moment.unix(this.props.lastUpdatedTimeStamp).format("DD/MM/YYYY h:mm:ss A");
+    const lastUpdatedTime = moment.unix(this.props.lastUpdatedTimeStamp).format('DD/MM/YYYY h:mm:ss A');
     return (
       <View style={styles.outer}>
         <View style={styles.inner}>
@@ -30,7 +30,7 @@ class CurrencyOutput extends Component<Props> {
 const styles = StyleSheet.create({
   outer: {
     alignItems: 'center',
-    backgroundColor: '#F7F9E0',
+    backgroundColor: '#F7F9E0'
   },
   inner: {
     flexDirection: 'row',

@@ -17,7 +17,7 @@ type Props = {
 
 class CurrencyInput extends Component<Props> {
   render() {
-    const lastRequestTime = moment.unix(this.props.lastRequestTime).format("DD/MM/YYYY h:mm:ss A");
+    const lastRequestTime = moment.unix(this.props.lastRequestTime).format('DD/MM/YYYY h:mm:ss A');
     return <View style={styles.outer}>
       <View style={styles.inner}>
         <TouchableOpacity onPress={() => {
@@ -34,7 +34,7 @@ class CurrencyInput extends Component<Props> {
             <Text style={styles.textStyle}>{this.props.destinationCurrency}</Text>
         }
       </View>
-      { 
+      {
         this.props.lastRequestTime &&
         <Text>Last successful request on {lastRequestTime}</Text>
       }
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: 'white',
     padding: 12,
-    width: 100,
+    width: 100
   }
 });
 

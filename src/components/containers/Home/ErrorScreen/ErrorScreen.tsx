@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 
 interface CompProps {
-    error: string
+    error?: string
 }
 
 class ErrorScreen extends Component<CompProps> {
@@ -43,8 +43,8 @@ render() {
              {this.props.error} </Animated.Text>
         </View>
     );
-}   
-};
+}
+}
 
 const styles = StyleSheet.create({
     container : {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         bottom: '18%',
         justifyContent: 'center',
-        position: 'absolute',
+        position: 'absolute'
     },
     titleText: {
         color: 'red',

@@ -10,12 +10,12 @@ type Props = {
 
 class AmountInput extends Component<Props> {
   onSourceAmountChange = (text: any) => {
-    if(!isNaN(text)) {
+    if (!isNaN(text)) {
       this.props.setUserSourceAmountDone(text);
     }
   }
   onDestinationAmountChange = (text: any) => {
-    if(!isNaN(text)) {
+    if (!isNaN(text)) {
       this.props.setUserDestinationAmountDone(text);
     }
   }
@@ -26,7 +26,7 @@ class AmountInput extends Component<Props> {
         <TextInput onChangeText={(text: string) => this.onSourceAmountChange(text)}
           keyboardType={'numeric'} style={styles.textInput}>
           {calculatedSourceAmount ? calculatedSourceAmount : ''}</TextInput>
-        <TextInput onChangeText={(text: string) => this.onDestinationAmountChange(text)} 
+        <TextInput onChangeText={(text: string) => this.onDestinationAmountChange(text)}
         keyboardType={'numeric'} style={styles.textInput}>
           {calculatedDestinationAmount ? calculatedDestinationAmount : ''}</TextInput>
       </View>

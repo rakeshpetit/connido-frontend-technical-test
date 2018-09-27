@@ -3,12 +3,12 @@ import renderer from 'react-test-renderer';
 
 import CurrencyOutput from './CurrencyOutput';
 
-it('renders correctly when there are no items', () => {
+it('renders CurrencyOutput correctly', () => {
   const lastUpdatedTimeStamp = 24436453;
   const input = '1';
   const output = '0.8945';
   const tree = renderer.create
-    (<CurrencyOutput 
+    (<CurrencyOutput
         lastUpdatedTimeStamp={lastUpdatedTimeStamp}
         input={input}
         output={output}

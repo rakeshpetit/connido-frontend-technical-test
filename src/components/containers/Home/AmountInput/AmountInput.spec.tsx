@@ -3,13 +3,13 @@ import renderer from 'react-test-renderer';
 
 import AmountInput from './AmountInput';
 
-it('renders correctly when there are no items', () => {
+it('renders AmountInput correctly', () => {
   const calculatedSourceAmount = 100;
   const calculatedDestinationAmount = 89.95;
-  const setUserSourceAmountDone = () => {};
-  const setUserDestinationAmountDone = () => {};
+  const setUserSourceAmountDone = jest.fn();
+  const setUserDestinationAmountDone = jest.fn();
   const tree = renderer.create
-    (<AmountInput 
+    (<AmountInput
         calculatedSourceAmount={calculatedSourceAmount}
         calculatedDestinationAmount={calculatedDestinationAmount}
         setUserSourceAmountDone={setUserSourceAmountDone}

@@ -55,7 +55,7 @@ class SpinnerButton extends Component<Props> {
     );
   }
 
-  render() {   
+  render() {
     return (
         this.props.loading ? this.renderSpinner() : this.renderButton()
     );

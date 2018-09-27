@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 class Background extends Component {
-  render() { 
+  render() {
+    const backgroundImage = require('../../../../assets/homeBg.png');
     return (
     <View style={styles.container}>
-       <Image source={require('../../../../assets/homeBg.png')} />
+       <Image source={backgroundImage} />
     </View>
     );
   }
@@ -14,7 +15,7 @@ class Background extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ccc',
-    opacity: 0.4, 
+    opacity: 0.4,
     flex: 1,
     position: 'absolute',
     justifyContent: 'center'
