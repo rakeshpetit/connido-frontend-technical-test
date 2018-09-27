@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders Background correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ccc",
+      "flex": 1,
+      "justifyContent": "center",
+      "opacity": 0.4,
+      "position": "absolute",
+    }
+  }
+>
+  <Image
+    source={1}
+  />
+</View>
+`;
+
 exports[`renders correctly when there are no items 1`] = `
 <View
   style={

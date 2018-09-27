@@ -18,9 +18,9 @@ class PickerCurrency extends Component<Props, any> {
         this.setState({currency: itemValue});
         this.props.setDestinationCurrencyDone(itemValue);
     }
-  render() { 
-    if(this.props.symbols.length <= 0) {
-        return null;
+  render() {
+    if (this.props.symbols.length <= 0) {
+        return undefined;
     }
     return (
     <View style={styles.container}>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   }
 });
 
