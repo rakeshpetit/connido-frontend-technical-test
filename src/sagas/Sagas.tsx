@@ -1,11 +1,13 @@
-import { takeEvery, takeLatest, put, call } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
+import { fork, take, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
+import { channel, delay } from 'redux-saga';
 import moment from 'moment';
 import axios from 'axios';
 import * as action from '../actions';
 import { ENV, DELAY, LOGGING_ENABLED } from '../const';
 
-function callAPI(url: string) {
+const actionChannel = channel();
+
+export function callAPI(url: string) {
     return axios.get(url)
       .then(res => res.data)
       .catch(error => error);
@@ -18,7 +20,7 @@ function* pollData() {
   }
 }
 
-function* refreshData() {
+export function* refreshData() {
     try {
         yield put(action.refreshDataStart());
         const result = yield call(callAPI, ENV.FIXER_API);
@@ -33,6 +35,30 @@ function* refreshData() {
         yield put(action.refreshDataDone(undefined));
         yield call(showErrorMessage, {data: error.json() });
       }
+}
+
+export function refreshDataPromise() {
+    return new Promise((resolve) => {
+        actionChannel.put(action.refreshDataStart());
+        resolve();
+    })
+    .then(() => callAPI(ENV.FIXER_API))
+    .then((result) => result.error ? Promise.reject('Error in result') : result)
+    .then((result) => {
+      actionChannel.put(action.lastRequestDone(moment().unix()));
+      return result;
+      })
+    .then((result) => actionChannel.put(action.refreshDataDone(result)))
+    .catch(() => {
+      actionChannel.put(action.refreshDataDone(undefined));
+      console.log('Error');
+    });
+}
+
+function* putActions() {
+  while (true) {
+    yield put(yield take(actionChannel));
+  }
 }
 
 function* refreshSymbolData() {
@@ -66,9 +92,11 @@ function debugLogger(data: any) {
 }
 
 export default function* rootSaga() {
-  yield takeEvery(action.REFRESH_DATA, refreshData);
+  yield takeEvery(action.REFRESH_DATA, refreshDataPromise);
+  // yield takeEvery(action.REFRESH_DATA, refreshData);
   yield takeEvery(action.REFRESH_SYMBOL_DATA, refreshSymbolData);
   yield takeLatest(action.SHOW_ERROR_MESSAGE, showErrorMessage);
   yield takeEvery(action.DEBUG_LOGGER, debugLogger);
   yield takeLatest(action.POLL_DATA, pollData);
+  yield fork(putActions);
 }
