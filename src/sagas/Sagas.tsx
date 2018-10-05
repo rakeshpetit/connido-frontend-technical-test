@@ -38,10 +38,7 @@ export function* refreshData() {
 }
 
 export function refreshDataPromise() {
-    return new Promise((resolve) => {
-        actionChannel.put(action.refreshDataStart());
-        resolve();
-    })
+    return Promise.resolve(actionChannel.put(action.refreshDataStart()))
     .then(() => callAPI(ENV.FIXER_API))
     .then((result) => result.error ? Promise.reject('Error in result') : result)
     .then((result) => {
