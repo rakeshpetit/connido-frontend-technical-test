@@ -46,9 +46,9 @@ export function refreshDataPromise() {
     .then((result) => result.error ? Promise.reject('Error in result') : result)
     .then((result) => {
       actionChannel.put(action.lastRequestDone(moment().unix()));
+      actionChannel.put(action.refreshDataDone(result));
       return result;
       })
-    .then((result) => actionChannel.put(action.refreshDataDone(result)))
     .catch(() => {
       actionChannel.put(action.refreshDataDone(undefined));
       console.log('Error');
