@@ -37,9 +37,9 @@ export function* refreshData() {
       }
 }
 
-export function refreshDataPromise() {
+export function refreshDataPromise(apiCall: Function) {
     return Promise.resolve(actionChannel.put(action.refreshDataStart()))
-    .then(() => callAPI(ENV.FIXER_API))
+    .then(() => apiCall(ENV.FIXER_API))
     .then((result) => result.error ? Promise.reject('Error in result') : result)
     .then((result) => {
       actionChannel.put(action.lastRequestDone(moment().unix()));
@@ -89,7 +89,7 @@ function debugLogger(data: any) {
 }
 
 export default function* rootSaga() {
-  yield takeEvery(action.REFRESH_DATA, refreshDataPromise);
+  yield takeEvery(action.REFRESH_DATA, refreshDataPromise, callAPI);
   // yield takeEvery(action.REFRESH_DATA, refreshData);
   yield takeEvery(action.REFRESH_SYMBOL_DATA, refreshSymbolData);
   yield takeLatest(action.SHOW_ERROR_MESSAGE, showErrorMessage);
