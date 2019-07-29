@@ -14,8 +14,8 @@ export class Bars extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            firstBar: '10',
-            secondBar: '5'
+            firstBar: '',
+            secondBar: ''
         }
     }
     
@@ -35,7 +35,7 @@ export class Bars extends Component<Props, State> {
           return { first: '100%', second: smallerValue+'%'}
       }
       else if(secondValue > firstValue){
-        const smallerValue = 100 * (secondValue / firstValue)
+        const smallerValue = 100 * (firstValue / secondValue)
         return { first: smallerValue+'%', second: '100%'}
     }
     else if(firstValue>0 && secondValue === firstValue) {
