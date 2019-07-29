@@ -52,6 +52,7 @@ export class HomePure extends Component<Props> {
     return (
       <View style={styles.container}>
         <Background />
+        <View style={{flex: 1}}>
         <CurrencyInput
           symbols={this.props.symbols}
           loading={this.props.loading}
@@ -62,9 +63,11 @@ export class HomePure extends Component<Props> {
           destinationCurrency={this.props.destinationCurrency}
           setDestinationCurrencyDone={this.props.setDestinationCurrencyDone}
         />
+        </View>
+        <View style={{flex: 2}}>
         {
           rates &&
-          <View>
+         <View>
             <CurrencyOutput lastUpdatedTimeStamp={timestamp} input={rates[sourceCurrency]} output={rates[destinationCurrency]} />
             <AmountInput
               setUserSourceAmountDone={this.props.setUserSourceAmountDone}
@@ -73,12 +76,21 @@ export class HomePure extends Component<Props> {
               calculatedDestinationAmount={calculatedDestinationAmount} />
           </View>
         }
+        </View>
+        <View style={{flex: 1, justifyContent: 'space-around'}}>
         <Button
           onPress={() => {
             this.props.navigation.navigate('About');
           }}
           title='About'
         />
+        <Button
+          onPress={() => {
+            this.props.navigation.navigate('Bars');
+          }}
+          title='Bars'
+        />
+        </View>
         <ErrorScreen error={this.props.errorMessage} />
       </View>
     );

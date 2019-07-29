@@ -1,6 +1,7 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from '../containers/Home/Home';
 import { About } from '../containers/About/About';
+import { Bars } from '../containers/Bars/Bars';
 
 const Routes = createStackNavigator(
     {
@@ -9,6 +10,9 @@ const Routes = createStackNavigator(
         },
         About: {
             screen: About
+        },
+        Bars: {
+            screen: Bars
         }
     },
     {
