@@ -5,17 +5,48 @@ type Props = {
   navigation?: any;
 };
 
-export class Bars extends Component<Props> {
+type State = {
+    firstBar: String,
+    secondBar: String,
+}
+
+export class Bars extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            firstBar: '10',
+            secondBar: '5'
+        }
+    }
+    
   onFirstBar = (value: string) => {
-    console.log("value", value);
+    this.setState({ ...this.state, firstBar: value})
   }
 
   onSecondBar = (value: string) => {
-    console.log("value", value);
+    this.setState({ ...this.state, secondBar: value})
+  }
+
+  getHeight = () => {
+      const firstValue = Number(this.state.firstBar)
+      const secondValue = Number(this.state.secondBar)
+      if(firstValue > secondValue){
+          const smallerValue = 100 * (secondValue / firstValue)
+          return { first: '100%', second: smallerValue+'%'}
+      }
+      else if(secondValue > firstValue){
+        const smallerValue = 100 * (secondValue / firstValue)
+        return { first: smallerValue+'%', second: '100%'}
+    }
+    else if(firstValue>0 && secondValue === firstValue) {
+        return { first: '100%', second: '100%'}
+    }
+    else return { first: '0%', second: '0%'}
   }
 
   render() {
     const { navigation } = this.props;
+    const barStyle = this.getHeight()
     return (
       <View style={styles.container}>
         <View
@@ -38,8 +69,8 @@ export class Bars extends Component<Props> {
           />
         </View>
         <View style={{ flex: 3, alignItems: 'flex-end', justifyContent: 'center', flexDirection: 'row' }}>
-            <View style={{ marginRight: '10%', width: '10%', height: '70%', backgroundColor: '#F3856E'}}></View>
-            <View style={{ width: '10%', height: '100%', backgroundColor: '#6EF372'}}></View>
+            <View style={{ marginRight: '10%', width: '10%', height: barStyle.first, backgroundColor: '#F3856E'}}></View>
+            <View style={{ width: '10%', height: barStyle.second, backgroundColor: '#6EF372'}}></View>
         </View>
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
