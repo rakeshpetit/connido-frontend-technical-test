@@ -52,7 +52,7 @@ export class HomePure extends Component<Props> {
     return (
       <View style={styles.container}>
         <Background />
-        <View style={{flex: 1}}>
+        <View style={{flex: 2, justifyContent: 'center'}}>
         <CurrencyInput
           symbols={this.props.symbols}
           loading={this.props.loading}
@@ -64,7 +64,7 @@ export class HomePure extends Component<Props> {
           setDestinationCurrencyDone={this.props.setDestinationCurrencyDone}
         />
         </View>
-        <View style={{flex: 2}}>
+        <View style={{flex: 3}}>
         {
           rates &&
          <View>
