@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
-import { Routes } from './components/routes/Routes';
+import AppRoute from './components/routes/Routes';
 import Store from './store/Store';
 
 export default class App extends React.Component {
@@ -9,7 +9,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
       <Provider store={Store}>
-        <Routes />
+        <AppRoute />
       </Provider>
       </View>
     );

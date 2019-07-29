@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from '../containers/Home/Home';
 import { About } from '../containers/About/About';
 
@@ -16,4 +16,7 @@ const Routes = createStackNavigator(
     }
 );
 
-export { Routes };
+
+const AppRoute = createAppContainer(Routes);
+
+export default AppRoute;
