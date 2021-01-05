@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/react-redux": "^6.0.9",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-preset-expo": "^5.2.0",
     "babel-preset-react-native": "^4.0.1",
     "expo": "^33.0.0",
